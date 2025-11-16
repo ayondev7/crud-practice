@@ -33,10 +33,10 @@ import { Link } from 'react-router-dom'
 const API_URL = '/api/prisma/products'
 
 export default function ProductVanillaPrisma() {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
+  const [products, _setProducts] = useState([])
+  const [loading, _setLoading] = useState(false)
+  const [error, _setError] = useState(null)
+  const [success, _setSuccess] = useState(null)
   const [editingId, setEditingId] = useState(null)
   
   const [formData, setFormData] = useState({
@@ -48,22 +48,22 @@ export default function ProductVanillaPrisma() {
     imageUrl: ''
   })
 
-  useEffect(() => {
-    fetchProducts()
-  }, [])
-
   /**
    * TODO: Implement this function
    * Fetch all products from the API
    * Handle loading state and errors
    */
-  const fetchProducts = async () => {
+  async function fetchProducts() {
     // YOUR CODE HERE
     // Hint: Use fetch() with GET method
     // Don't forget to set loading state
     // Parse the JSON response and update products state
     console.log('TODO: Implement fetchProducts()')
   }
+
+  useEffect(() => {
+    fetchProducts()
+  }, [])
 
   /**
    * TODO: Implement this function
@@ -107,7 +107,7 @@ export default function ProductVanillaPrisma() {
    * TODO: Implement this function
    * Handle input field changes
    */
-  const handleChange = (e) => {
+  const handleChange = () => {
     // YOUR CODE HERE
     // Hint: Update formData state with new value
     console.log('TODO: Implement handleChange()')

@@ -5,29 +5,11 @@
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import axios from 'axios'
 
 const API_URL = '/api/prisma/posts'
 
 export default function PostReactQueryPrisma() {
-  const queryClient = useQueryClient()
-  const [formData, setFormData] = useState({ title: '', content: '', published: false, authorId: '' })
-  const [editingId, setEditingId] = useState(null)
-
-  // TODO: Implement useQuery to fetch posts
-  // const { data, isLoading, error } = useQuery({ ... })
-
-  // TODO: Implement useMutation for create/update
-  // const saveMutation = useMutation({ ... })
-
-  // TODO: Implement useMutation for delete
-  // const deleteMutation = useMutation({ ... })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('TODO: saveMutation.mutate()')
-  }
+  const [ _formData ] = useState({ title: '', content: '', published: false, authorId: '' })
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">

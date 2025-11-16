@@ -57,8 +57,8 @@ export default function VanillaFetchPrisma() {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
       
-      const data = await response.json()
-      setUsers(data.data || [])
+      const json = await response.json()
+      setUsers(json.data || [])
     } catch (err) {
       setError(err.message)
       console.error('Error fetching users:', err)
@@ -98,7 +98,7 @@ export default function VanillaFetchPrisma() {
         throw new Error(errorData.message || 'Failed to save user')
       }
 
-      const data = await response.json()
+      await response.json()
       setSuccess(editingId ? 'User updated successfully!' : 'User created successfully!')
       
       // Reset form

@@ -5,26 +5,26 @@
 
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+// axios intentionally omitted until implemented
 
 const API_URL = '/api/prisma/products'
 
 export default function ProductAxiosPrisma() {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
-  const [editingId, setEditingId] = useState(null)
-  const [formData, setFormData] = useState({ name: '', description: '', price: '', stock: '', category: '', imageUrl: '' })
-
-  useEffect(() => { fetchProducts() }, [])
+  const [_products, _setProducts] = useState([])
+  const [_loading, _setLoading] = useState(false)
+  const [_error, _setError] = useState(null)
+  const [_success, _setSuccess] = useState(null)
+  const [_editingId, _setEditingId] = useState(null)
+  const [_formData, _setFormData] = useState({ name: '', description: '', price: '', stock: '', category: '', imageUrl: '' })
 
   // TODO: Use axios.get(), axios.post(), axios.put(), axios.delete()
-  const fetchProducts = async () => { console.log('TODO: axios.get()') }
-  const handleSubmit = async (e) => { e.preventDefault(); console.log('TODO: axios.post() or axios.put()') }
-  const handleDelete = async (id) => { console.log('TODO: axios.delete()') }
-  const handleEdit = (product) => { console.log('TODO: handleEdit') }
-  const handleChange = (e) => { setFormData({ ...formData, [e.target.name]: e.target.value }) }
+  async function fetchProducts() { console.log('TODO: axios.get()') }
+
+  useEffect(() => { fetchProducts() }, [])
+  const _handleSubmit = async () => { console.log('TODO: axios.post() or axios.put()') }
+  const _handleDelete = async () => { console.log('TODO: axios.delete()') }
+  const _handleEdit = () => { console.log('TODO: handleEdit') }
+  const _handleChange = (_e) => { _setFormData({ ..._formData, [_e?.target?.name]: _e?.target?.value }) }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">

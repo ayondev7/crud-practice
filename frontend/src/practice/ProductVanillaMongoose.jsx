@@ -10,23 +10,23 @@ import { Link } from 'react-router-dom'
 const API_URL = '/api/mongoose/products'
 
 export default function ProductVanillaMongoose() {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [success, setSuccess] = useState(null)
+  const [products, _setProducts] = useState([])
+  const [loading, _setLoading] = useState(false)
+  const [error, _setError] = useState(null)
+  const [success, _setSuccess] = useState(null)
   const [editingId, setEditingId] = useState(null)
   const [formData, setFormData] = useState({ name: '', description: '', price: '', stock: '', category: '', imageUrl: '' })
+
+  // TODO: Implement these functions
+  async function fetchProducts() { console.log('TODO: fetchProducts') }
 
   useEffect(() => {
     fetchProducts()
   }, [])
-
-  // TODO: Implement these functions
-  const fetchProducts = async () => { console.log('TODO: fetchProducts') }
   const handleSubmit = async (e) => { e.preventDefault(); console.log('TODO: handleSubmit') }
   const handleDelete = async (id) => { console.log('TODO: handleDelete', id) }
   const handleEdit = (product) => { console.log('TODO: handleEdit', product) }
-  const handleChange = (e) => { console.log('TODO: handleChange') }
+  const handleChange = () => { console.log('TODO: handleChange') }
   const handleCancelEdit = () => { setFormData({ name: '', description: '', price: '', stock: '', category: '', imageUrl: '' }); setEditingId(null) }
 
   return (
