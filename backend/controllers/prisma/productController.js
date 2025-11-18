@@ -4,6 +4,7 @@
  * Handles all CRUD operations for Products using Prisma (PostgreSQL)
  */
 
+const { response } = require('../../app');
 const { prisma } = require('../../config/prisma');
 
 /**
@@ -77,21 +78,53 @@ exports.getProductById = async (req, res, next) => {
  * @route   POST /api/prisma/products
  * @access  Public
  */
-exports.createProduct = async (req, res, next) => {
-  try {
-    const { name, description, price, stock, category, imageUrl } = req.body;
+// exports.createProduct = async (req, res, next) => {
+//   try {
+//     const { name, description, price, stock, category, imageUrl } = req.body;
     
-    // Validate required fields
-    if (!name || !price || !category) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please provide name, price, and category'
+//     // Validate required fields
+//     if (!name || !price || !category) {
+//       return res.status(400).json({
+//         success: false,
+//         message: 'Please provide name, price, and category'
+//       });
+//     }
+    
+//     // Create new product
+//     const product = await prisma.product.create({
+//       data: {
+//         name,
+//         description: description || null,
+//         price: parseFloat(price),
+//         stock: stock ? parseInt(stock) : 0,
+//         category,
+//         imageUrl: imageUrl || null
+//       }
+//     });
+    
+//     res.status(201).json({
+//       success: true,
+//       message: 'Product created successfully',
+//       data: product
+//     });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+exports.createProduct = async(req,res,next)=> {
+  try {
+    const {name, description, price, stock, category, imageUrl} = req.body;
+
+    if(!name || !price || !category){
+     return res.status(400).json({
+        success:false,
+        message:"Please provide name, price, and category"
       });
     }
-    
-    // Create new product
+
     const product = await prisma.product.create({
-      data: {
+      data:{
         name,
         description: description || null,
         price: parseFloat(price),
@@ -100,17 +133,17 @@ exports.createProduct = async (req, res, next) => {
         imageUrl: imageUrl || null
       }
     });
-    
+
     res.status(201).json({
-      success: true,
-      message: 'Product created successfully',
-      data: product
+      success:true,
+      message:"product added successfully",
+      data:product
     });
+
   } catch (error) {
     next(error);
   }
 };
-
 /**
  * @desc    Update product
  * @route   PUT /api/prisma/products/:id
