@@ -1,11 +1,13 @@
 {
   "name": "crud-practice-backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Backend for CRUD practice with Prisma/PostgreSQL and Mongoose/MongoDB",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
+    "seed": "node scripts/seedMongoose.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio"

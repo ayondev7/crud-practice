@@ -1,50 +1,51 @@
-/**
- * MONGOOSE USER MODEL
- * 
- * Defines the schema and model for User collection in MongoDB
- */
+import mongoose from 'mongoose';
 
-const mongoose = require('mongoose');
-
-// Define User Schema
 const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
   email: {
     type: String,
-    required: [true, 'Email is required'],
+    required: true,
     unique: true,
-    lowercase: true,
     trim: true,
-    match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email']
+    lowercase: true
   },
-  name: {
+  password: {
     type: String,
-    required: [true, 'Name is required'],
-    trim: true,
-    minlength: [2, 'Name must be at least 2 characters'],
-    maxlength: [50, 'Name cannot exceed 50 characters']
+    required: true
   },
-  age: {
-    type: Number,
-    min: [0, 'Age cannot be negative'],
-    max: [150, 'Please provide a valid age']
-  }
+  firstName: {
+    type: String,
+    trim: true
+  },
+  lastName: {
+    type: String,
+    trim: true
+  },
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
+  },
+  isActive: {
+    type: Boolean,
+    default: true
+  },
+  addresses: [{
+    street: String,
+    city: String,
+    state: String,
+    zipCode: String,
+    country: String
+  }]
 }, {
-  timestamps: true, // Automatically adds createdAt and updatedAt fields
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
+  timestamps: true
 });
 
-// Virtual field: posts (reference to Post model)
-userSchema.virtual('posts', {
-  ref: 'Post',
-  localField: '_id',
-  foreignField: 'author'
-});
-
-// Index for faster queries
-userSchema.index({ email: 1 });
-
-// Create and export User model
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+export default User;
