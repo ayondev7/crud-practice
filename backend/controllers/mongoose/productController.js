@@ -31,3 +31,26 @@ export const getFilteredProducts = async (req, res) => {
     });
   }
 };
+
+export const createProduct = async (req,res) => {
+try {
+  const {name,description,price,stock,category} = req.body;
+  const product = await Product.create({
+    name:name.trim(),
+    description:description.trim(),
+    price:parseFloat(price),
+    stock:parseInt(stock),
+    category:category.trim()
+  })
+  return res.status(200).json({
+    success:true,
+    message:"Product created successfully",
+    data:product
+  });
+} catch (error) {
+  return res.status(500).json({
+    success:false,
+    message:error.message
+  });
+}
+};
