@@ -149,54 +149,93 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Practice Section */}
+        {/* CRUD Operations Section */}
         <section className="mb-20">
           <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <span className="text-3xl">🎯</span>
-                <h2 className="text-3xl font-bold text-white">Practice Problems</h2>
+                <h2 className="text-3xl font-bold text-white">CRUD Operations</h2>
               </div>
-              <p className="text-slate-400">Apply what you learned - UI is built, you implement the logic</p>
+              <p className="text-slate-400">Clean, focused pages for each operation type</p>
             </div>
           </div>
 
           <div className="space-y-10">
-            {/* Product Management */}
+            {/* POST Operations */}
             <div>
               <div className="mb-6 flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-600/20 text-3xl shadow-lg shadow-pink-500/20">
-                  🛍️
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-600/20 text-3xl shadow-lg shadow-green-500/20">
+                  ➕
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Product Management</h3>
-                  <p className="text-slate-400">Build a complete product CRUD interface</p>
+                  <h3 className="text-2xl font-bold text-white">Create (POST)</h3>
+                  <p className="text-slate-400">Add new resources to your database</p>
                 </div>
               </div>
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                <PracticeCard to="/practice/product-vanilla-prisma" title="Vanilla + Fetch" subtitle="Prisma" variant="purple" />
-                <PracticeCard to="/practice/product-vanilla-mongoose" title="Vanilla + Fetch" subtitle="Mongoose" variant="pink" />
-                <PracticeCard to="/practice/product-axios-prisma" title="Axios" subtitle="Prisma" variant="purple" />
-                <PracticeCard to="/practice/product-axios-mongoose" title="Axios" subtitle="Mongoose" variant="pink" />
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <CrudCard to="/crud/create-user" title="Create User" subtitle="POST /users" icon="👤" variant="green" />
+                <CrudCard to="/crud/create-post" title="Create Post" subtitle="POST /posts" icon="📝" variant="green" />
+                <CrudCard to="/crud/create-product" title="Create Product" subtitle="POST /products" icon="🛍️" variant="green" />
+                <CrudCard to="/crud/create-order" title="Create Order" subtitle="POST /orders" icon="📦" variant="green" />
               </div>
             </div>
 
-            {/* Blog Posts */}
+            {/* GET Operations */}
             <div>
               <div className="mb-6 flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 text-3xl shadow-lg shadow-purple-500/20">
-                  📝
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-600/20 text-3xl shadow-lg shadow-blue-500/20">
+                  🔍
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Blog Post Management</h3>
-                  <p className="text-slate-400">Create a blog post system with advanced patterns</p>
+                  <h3 className="text-2xl font-bold text-white">Read (GET)</h3>
+                  <p className="text-slate-400">Fetch and display data from your database</p>
                 </div>
               </div>
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                <PracticeCard to="/practice/post-react-query-prisma" title="React Query" subtitle="Prisma" variant="purple" />
-                <PracticeCard to="/practice/post-react-query-mongoose" title="React Query" subtitle="Mongoose" variant="pink" />
-                <PracticeCard to="/practice/post-fullstack-prisma" title="Full Stack" subtitle="Prisma" variant="purple" />
-                <PracticeCard to="/practice/post-fullstack-mongoose" title="Full Stack" subtitle="Mongoose" variant="pink" />
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                <CrudCard to="/crud/list-users" title="List Users" subtitle="GET /users" icon="👥" variant="blue" />
+                <CrudCard to="/crud/get-user" title="Get User" subtitle="GET /users/:id" icon="👤" variant="blue" />
+                <CrudCard to="/crud/list-posts" title="List Posts" subtitle="GET /posts" icon="📄" variant="blue" />
+                <CrudCard to="/crud/list-products" title="List Products" subtitle="GET /products" icon="🛒" variant="blue" />
+                <CrudCard to="/crud/list-orders" title="List Orders" subtitle="GET /orders" icon="📋" variant="blue" />
+              </div>
+            </div>
+
+            {/* UPDATE Operations */}
+            <div>
+              <div className="mb-6 flex items-center gap-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-500/20 to-orange-600/20 text-3xl shadow-lg shadow-yellow-500/20">
+                  ✏️
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Update (PATCH/PUT)</h3>
+                  <p className="text-slate-400">Modify existing resources in your database</p>
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <CrudCard to="/crud/update-user" title="Update User" subtitle="PATCH /users/:id" icon="👤" variant="yellow" />
+                <CrudCard to="/crud/update-post" title="Update Post" subtitle="PATCH /posts/:id" icon="📝" variant="yellow" />
+                <CrudCard to="/crud/update-product" title="Update Product" subtitle="PATCH /products/:id" icon="🛍️" variant="yellow" />
+                <CrudCard to="/crud/update-order-status" title="Update Order" subtitle="PATCH /orders/:id" icon="📦" variant="yellow" />
+              </div>
+            </div>
+
+            {/* DELETE Operations */}
+            <div>
+              <div className="mb-6 flex items-center gap-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500/20 to-rose-600/20 text-3xl shadow-lg shadow-red-500/20">
+                  🗑️
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">Delete (DELETE)</h3>
+                  <p className="text-slate-400">Remove resources from your database</p>
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <CrudCard to="/crud/delete-user" title="Delete User" subtitle="DELETE /users/:id" icon="👤" variant="red" />
+                <CrudCard to="/crud/delete-post" title="Delete Post" subtitle="DELETE /posts/:id" icon="📝" variant="red" />
+                <CrudCard to="/crud/delete-product" title="Delete Product" subtitle="DELETE /products/:id" icon="🛍️" variant="red" />
+                <CrudCard to="/crud/delete-order" title="Delete Order" subtitle="DELETE /orders/:id" icon="📦" variant="red" />
               </div>
             </div>
           </div>
@@ -318,3 +357,33 @@ function PracticeCard({ to, title, subtitle, variant = 'purple' }) {
     </Link>
   )
 }
+
+function CrudCard({ to, title, subtitle, icon, variant = 'green' }) {
+  const colors = {
+    green: 'border-green-500/30 from-green-500/10 to-emerald-600/5 hover:border-green-400/50 hover:shadow-green-500/20',
+    blue: 'border-blue-500/30 from-blue-500/10 to-cyan-600/5 hover:border-blue-400/50 hover:shadow-blue-500/20',
+    yellow: 'border-yellow-500/30 from-yellow-500/10 to-orange-600/5 hover:border-yellow-400/50 hover:shadow-yellow-500/20',
+    red: 'border-red-500/30 from-red-500/10 to-rose-600/5 hover:border-red-400/50 hover:shadow-red-500/20'
+  }
+
+  return (
+    <Link
+      to={to}
+      className={`group relative overflow-hidden rounded-2xl border ${colors[variant]} bg-gradient-to-br backdrop-blur-sm p-5 transition-all duration-300 hover:scale-105 hover:shadow-xl`}
+    >
+      <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-white/5 blur-2xl transition-all group-hover:bg-white/10" />
+      <div className="relative">
+        <div className="mb-3 text-3xl">{icon}</div>
+        <h4 className="text-lg font-bold text-white mb-1">{title}</h4>
+        <p className="text-xs text-slate-400 font-mono mb-3">{subtitle}</p>
+        <div className="flex items-center gap-2 text-xs text-slate-400 transition-colors group-hover:text-white">
+          <span>Open Form</span>
+          <svg className="h-3 w-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
