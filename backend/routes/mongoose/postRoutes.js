@@ -4,6 +4,6 @@ import * as postController from '../../controllers/mongoose/postController.js';
 const router = express.Router();
 
 router.get('/category/:slug',postController.getPostsByCategory);
-router.post
+router.post('/create-post',postController.createPost)
 
 export default router;
