@@ -31,11 +31,18 @@ export default function CreateProduct() {
       description: formData.description,
       price: parseFloat(formData.price) || 0,
       stock: parseInt(formData.stock) || 0,
-      category: formData.category,
+      categoryName: formData.category,
     };
     try {
       const res = await axios.post(CREATE_PRODUCT, dataToSubmit);
       toast.success(res?.data?.message);
+      setFormData({
+        name: "",
+        description: "",
+        price: "",
+        stock: "",
+        category: "",
+      })
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.log(error?.res?.data?.message);
