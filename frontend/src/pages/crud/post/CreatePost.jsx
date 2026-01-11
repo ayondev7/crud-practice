@@ -9,7 +9,7 @@ export default function CreatePost() {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
-    authorName: "",
+    author: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -30,7 +30,7 @@ export default function CreatePost() {
       toast.success(res.data.message);
       setFormData({
         title:"",
-        authorName:"",
+        author:"",
         content:""
       });
     } catch (error) {
@@ -38,7 +38,6 @@ export default function CreatePost() {
     }finally{
       setLoading(false);
     }
-
   }
 
   return (
@@ -102,11 +101,11 @@ export default function CreatePost() {
             </div>
 
             <button
-              type="button"
+              type="submit"
               disabled={loading}
               className="w-full rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/25 transition hover:shadow-purple-500/40"
             >
-              {loading ? 'Create Post' : 'Creating'}
+              {!loading ? 'Create Post' : 'Creating'}
             </button>
           </form>
         </div>

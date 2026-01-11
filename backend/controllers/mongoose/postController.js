@@ -41,5 +41,5 @@ export const getPostsByCategory = async (req,res) => {
 }
 
 export const createPost = async (req,res) =>{
-  
+  console.log(req.body);
 }
